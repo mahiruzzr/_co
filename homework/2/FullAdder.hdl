@@ -14,17 +14,13 @@ CHIP FullAdder {
     //// Replace this comment with your code.
 
     Nand(a=a,b=b,out=nab);
-    Nand(a=a, b=a,out = naa);
-    Nand(a=b, b=b, out = nbb);
-    Nand(a=naa, b=nbb , out = nab1);
-    Nand(a=nab,b=nab1,out=nab2);
-    Nand(a=nab2,b=nab2,out=nab3);
+    Nand(a=a, b=nab,out = nab1);
+    Nand(a=b, b=nab, out = nab2);
+    Nand(a=nab1, b=nab2 , out = nab3);
     Nand(a=nab3,b=c,out=nac);
-    Nand(a=nab3, b=nab3,out = nab4);
-    Nand(a=c, b=c, out = ncc);
-    Nand(a=nab4, b=ncc , out = nac1);
-    Nand(a=nac,b=nac1,out=nac2);
-    Nand(a=nac2,b=nac2,out=sum);
+    Nand(a=nab3, b=nac,out = nab4);
+    Nand(a=c, b=nac, out = nab5);
+    Nand(a=nab4, b=nab5 , out = sum);
 
     Nand( a=a , b=b , out = nab0 );
     Nand ( a = nab0, b = nab0 , out = nab5);
@@ -40,3 +36,4 @@ CHIP FullAdder {
     Nand(a=naaac1, b=nbc2 , out = carry);
 
 }
+

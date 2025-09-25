@@ -12,4 +12,13 @@ CHIP Mux {
 
     PARTS:
     //// Replace this comment with your code.
+    Nand(a=sel,b=sel,out=nsel);
+    Nand(a=nsel,b=a,out=nasel);
+    Nand(a=nasel,b=nasel,out=nasel1);
+    Nand(a=sel,b=b,out=nbsel);
+    Nand(a=nbsel,b=nbsel,out=nbsel1);
+    Nand(a=nasel1, b=nasel1,out = nasel2);
+    Nand(a=nbsel1, b=nbsel1, out = nbsel2);
+    Nand(a=nasel2, b=nbsel2 , out = out);
+
 }

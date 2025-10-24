@@ -15,28 +15,11 @@ CHIP PC {
     
     PARTS:
     //// Replace this comment with your code.
-    Add16(a=out, b[0]=true,
-          b[1]=false,
-          b[2]=false,
-          b[3]=false,
-          b[4]=false,
-          b[5]=false,
-          b[6]=false,
-          b[7]=false,
-          b[8]=false,
-          b[9]=false,
-          b[10]=false,
-          b[11]=false,
-          b[12]=false,
-          b[13]=false,
-          b[14]=false,
-          b[15]=false,
-          out=incOut);
-    
-    Mux16(a=out, b=incOut, sel=inc, out=incVal);
+    Inc16(in=oo, out=incOut);
+    Mux16(a=oo, b=incOut, sel=inc, out=incVal);
     Mux16(a=incVal, b=in, sel=load, out=loadVal);
-    Mux16(a=loadVal, b=false, sel=reset, out=next);
-
-    Register(in=next, load=true, out=out);
+    Mux16(a=loadVal, b[0..15]=false, sel=reset, out=next);
+    Register(in=next, load=true, out=out, out=oo);
 }
+
 

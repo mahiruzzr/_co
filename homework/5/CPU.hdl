@@ -33,4 +33,72 @@ CHIP CPU {
 
     PARTS:
 	//// Replace this comment with your code.
+	Or16(a=instruction, b=false, out[15]=isC,
+                                out[12]=a, out[11]=c1,
+                                out[10]=c2, out[9]=c3,
+                                out[8]=c4, out[7]=c5,
+                                out[6]=c6, out[5]=d1,
+                                out[4]=d2, out[3]=d3,
+                                out[2]=j1, out[1]=j2,
+                                out[0]=j3);
+    Not(in=isC, out=isA);
+    And(a=isC, b=d1, out=a1);
+    Or(a=isA, b=a1, out=oo);
+    And(a=isC, b=d2, out=a2);
+    And(a=isC, b=d3, out=writeM);
+
+    Mux16(a=instruction, b=aluOut, sel=isC, out=T1);
+    ARegister(in=T1, load=oo, out=aRegOut, out[0..14]=addressM);
+    Mux16(a=aRegOut, b=inM, sel=a, out=T3);
+
+    DRegister(in=aluOut, load=a2, out=T4);
+
+    ALU(x=T4,
+    y=T3,
+    zx=c1,
+    nx=c2,
+    zy=c3, 
+    ny=c4,
+    f=c5,
+    no=c6,
+    out=outM,
+    out=aluOut,
+    zr=zr,
+    ng=ng);
+
+    Not(in=zr, out=notZr);
+    Not(in=ng, out=notNg);
+    Or(a=zr, b=ng, out=isZeroOrNeg);
+    Not(in=isZeroOrNeg, out=isPos);
+    Or(a=zr, b=notNg, out=isZeroOrPos);
+
+    Not(in=j1, out=nj1);
+    Not(in=j2, out=nj2);
+    Not(in=j3, out=nj3);
+
+    And(a=nj1, b=nj2, out=t1);And(a=t1, b=j3, out=isJGT);
+    And(a=nj1, b=j2, out=t2);And(a=t2, b=nj3, out=isJEQ);
+    And(a=nj1, b=j2, out=t3);And(a=t3, b=j3, out=isJGE);
+    And(a=j1, b=nj2, out=t4);And(a=t4, b=nj3, out=isJLT);
+    And(a=j1, b=nj2, out=t5);And(a=t5, b=j3, out=isJNE);
+    And(a=j1, b=j2, out=t6);And(a=t6, b=nj3, out=isJLE);
+    And(a=j1, b=j2, out=t7);And(a=t7, b=j3, out=isJMP);
+
+    And(a=isJGT, b=isPos, out=jump1);
+    And(a=isJEQ, b=zr, out=jump2);
+    And(a=isJGE, b=isZeroOrPos, out=jump3);
+    And(a=isJLT, b=ng, out=jump4);
+    And(a=isJNE, b=notZr, out=jump5);
+    And(a=isJLE, b=isZeroOrNeg, out=jump6);
+
+    Or(a=jump1, b=jump2, out=p1);
+    Or(a=p1, b=jump3, out=p2);
+    Or(a=p2, b=jump4, out=p3);
+    Or(a=p3, b=jump5, out=p4);
+    Or(a=p4, b=jump6, out=p5);
+    Or(a=p5, b=isJMP, out=p6);
+
+    And(a=p6, b=isC, out=pcLoad);
+
+    PC(in=aRegOut, inc=true, load=pcLoad, reset=reset, out[0..14]=pc);
 }

@@ -26,4 +26,37 @@ CHIP Memory {
 
     PARTS:
 	//// Replace this comment with your code.
+	// --- 1. 寫入邏輯 (決定 load 訊號去哪裡) ---
+    
+    // 第一層分流：根據 address[14] 判斷是 RAM 還是 I/O (Screen/KBD)
+    DMux(in=load, sel=address[14], a=loadRAM, b=loadIO);
+    
+    // 第二層分流：如果是 I/O，根據 address[13] 判斷是 Screen 還是 KBD
+    // 注意：如果是 KBD，我們就讓 loadKbd 空接，因為鍵盤不能寫入
+    DMux(in=loadIO, sel=address[13], a=loadScreen, b=loadKbd);
+
+
+    // --- 2. 內部組件連接 ---
+
+    // RAM16K: 負責 0x0000 - 0x3FFF
+    // 注意：RAM16K 只需要 14 個 bit 的地址 (address[0..13])
+    RAM16K(in=in, load=loadRAM, address=address[0..13], out=outRAM);
+
+    // Screen: 負責 0x4000 - 0x5FFF
+    // 注意：Screen 只需要 13 個 bit 的地址 (address[0..12])，這是內建晶片定義的
+    Screen(in=in, load=loadScreen, address=address[0..12], out=outScreen);
+
+    // Keyboard: 負責 0x6000
+    // 鍵盤只有輸出，沒有輸入與 load
+    Keyboard(out=outKbd);
+
+
+    // --- 3. 輸出邏輯 (決定 out 輸出誰的數據) ---
+
+    // 使用 address[13..14] 作為選擇 bit
+    // 00 -> RAM
+    // 01 -> RAM (因為 address[14]=0 時都是 RAM)
+    // 10 -> Screen
+    // 11 -> Keyboard
+    Mux4Way16(a=outRAM, b=outRAM, c=outScreen, d=outKbd, sel=address[13..14], out=out);
 }

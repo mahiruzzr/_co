@@ -19,4 +19,25 @@ CHIP Computer {
 
     PARTS:
     //// Replace this comment with your code.
+    //// Replace this comment with your code.
+    // 1. ROM32K (唯讀記憶體 - 存放程式碼)
+    // CPU 的 PC (Program Counter) 告訴 ROM 要讀哪一行
+    // ROM 吐出 instruction 給 CPU
+    ROM32K(address=pc, out=instruction);
+
+    // 2. CPU (中央處理器)
+    // inM: 從 Memory 讀來的數據
+    // instruction: 從 ROM 讀來的指令
+    // reset: 外界輸入的重置訊號
+    // outM, writeM, addressM: 輸出的數據、寫入旗標、地址 (傳給 Memory)
+    // pc: 下一個指令的地址 (傳給 ROM)
+    CPU(inM=memOut, instruction=instruction, reset=reset, outM=outM, writeM=writeM, addressM=addressM, pc=pc);
+
+    // 3. Memory (RAM + Screen + Keyboard)
+    // in: CPU 想寫入的數據 (outM)
+    // load: 是否寫入的開關 (writeM)
+    // address: 寫入/讀取的地址 (addressM)
+    // out: 讀出的數據 (傳回給 CPU 的 inM)
+    Memory(in=outM, load=writeM, address=addressM, out=memOut);
 }
+

@@ -45,18 +45,22 @@
     * 由於 Hack 組合語言的低階邏輯與思考方式對我來說相當晦澀難懂，在撰寫 `Mult.asm` 和 `Fill.asm` 時，我主要依靠 Gemini 協助生成程式碼並解釋其運作原理，幫助我跨過這個思考轉換的門檻 **(相關對話紀錄已遺失)**。
 
 ### Chapter 5: Computer Architecture (電腦架構) 🚀
-**目標：** 整合記憶體、CPU 與 ROM，建構完整的 Hack Computer。
+**目標：** 實作 **Memory (記憶體)**、**CPU (中央處理器)** 與 **Computer (完整電腦)**。
 
-這是硬體篇最複雜、也最核心的一章。我採取了混合式的學習策略來完成 CPU 的設計：
+這是硬體篇的最終章，目標是將前四章的成果整合。我分別針對三個核心元件採取了不同的實作策略：
 
-1.  **指令解碼 (Instruction Decoding) - 依靠官方圖表：**
-    * 關於 CPU 如何區分 A-instruction 與 C-instruction，以及 C-instruction 中各個 bit (dest, comp, jump) 對應的控制訊號，我主要參考 **Nand2tetris 官方網站的簡報與圖表**。
-    * 透過閱讀電路圖與真值表，我自行理解了控制單元 (Control Unit) 的邏輯流向。
+1.  **Memory.hdl：**
+    * 將 RAM16K、Screen 與 Keyboard 映射到正確的記憶體位址空間，建立統一的定址系統。
 
-2.  **程式計數器邏輯 (Program Counter Logic) - AI 輔助實作：**
-    * 在實作 CPU 內部的 PC 跳躍邏輯 (Jump Logic) 時，需要同時考慮跳躍位元 ($j_1, j_2, j_3$) 與 ALU 的輸出狀態 ($zr, ng$)。
-    * 這部分的組合邏輯相當繁瑣（多種跳躍條件）。我將這些條件描述給 **Gemini**，請 AI 協助生成並優化這部分的跳躍判斷邏輯，我再將其整合進 CPU 的設計中。這讓我能專注於整體架構的正確性，而不必深陷於布林代數的繁瑣化簡中。
-    * 🔗 **參考對話紀錄：** [Gemini Chat - PC Jump Logic Optimization](https://gemini.google.com/share/d35398fbe668)
+2.  **CPU.hdl：** (最複雜的核心部分)
+    * **指令解碼 (Instruction Decoding) - 依靠官方圖表：**
+        關於如何區分 A-instruction 與 C-instruction，以及 C-instruction 中各個 bit (dest, comp, jump) 對應的控制訊號，我主要參考 **Nand2tetris 官方網站的簡報與圖表**。透過閱讀電路圖與真值表，我自行理解了控制單元 (Control Unit) 的邏輯流向。
+    * **程式計數器邏輯 (PC Jump Logic) - AI 輔助實作：**
+        在實作 CPU 內部的 PC 跳躍邏輯時，需要同時考慮跳躍位元 ($j_1, j_2, j_3$) 與 ALU 的輸出狀態 ($zr, ng$)。這部分的組合邏輯相當繁瑣。我將這些條件描述給 **Gemini**，請 AI 協助生成並優化這部分的跳躍判斷邏輯，我再將其整合進 CPU 的設計中。
+        * 🔗 **參考對話紀錄：** [Gemini Chat - PC Jump Logic Optimization](https://gemini.google.com/share/d35398fbe668)
+
+3.  **Computer.hdl：**
+    * 將 CPU、Memory 與 ROM32K 連接起來，完成 Hack 電腦的最終組裝。
 
 
 目前進度：**Hardware Layer Completed (100%)** ✅

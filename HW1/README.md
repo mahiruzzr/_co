@@ -45,3 +45,4 @@
 * **Memory.jack：** 管理 Heap (堆積) 記憶體，透過 **Free List (空閒列表)** 演算法實作 `alloc` 與 `deAlloc`，有效管理記憶體碎片。
 * [cite_start]**Sys.jack：** 負責系統初始化 (`init`)，並利用巢狀迴圈實作 `wait` 的 Busy-Wait 延遲機制 [cite: 8-12]。
 * **Screen.jack：** 提供圖形驅動，實作採用了 **Bresenham's Algorithm** (或類似的高效整數運算)，避免浮點運算以加速直線繪製。
+* 🔗 **參考資料：** [[Github](https://github.com/Dong-HuiYun/_co/blob/64be87fb0831ef6cac6137d0d9992970da21ad3b/homework/%E6%9C%9F%E6%9C%AB%E4%BD%9C%E6%A5%AD/README.md)][[Github](https://github.com/Luo051227/_co/blob/15aef4d9492b008504dfd4d05190813577911a02/%E6%9C%9F%E6%9C%AB/README.md)][[Github](https://github.com/linyue0096/_co/blob/1a5818d4e01a58f2b6b5a3ace9e192256f889f5c/homework/README6~11.md)]

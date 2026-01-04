@@ -1,13 +1,3 @@
-# Nand2tetris Part II: Software Hierarchy (Chapters 6-12) 💾
-
-在完成了硬體層級 (Hardware Hierarchy) 的建構後，專案進入軟體層級，目標是建構一套完整的現代電腦軟體堆疊。從最底層的二進位轉換，一路向上至高階語言的應用程式，每一層都為上一層提供抽象化服務。
-
-本階段實作結合了 **Google Gemini** 的技術輔助，針對組譯器、虛擬機、編譯器與作業系統進行架構分析與功能驗證。
-
----
-
-## 🛠️ 軟體堆疊架構 (Software Stack Architecture)
-
 ### Chapter 6: The Assembler (組譯器)
 **核心任務：** 填補人類可讀符號與硬體可執行代碼之間的鴻溝。
 * **運作原理：** 採用 **兩次掃描 (Two-Pass)** 策略將 `.asm` 翻譯為 `.hack` 二進位碼 。
@@ -26,7 +16,7 @@
 * **Flow Control & Function (流程與函式)：**
     * 實作 `label`, `goto`, `if-goto` 實現程式流程控制。
     * **Bootstrap Code:** 在程式啟動時自動寫入組合語言，強制設定 `SP=256` 並呼叫 `Sys.init`，確保堆疊指標位於正確的記憶體區段。
-* 🔗 **Gemini 協作紀錄：** [待補：VM 記憶體映射與堆疊操作]
+* 🔗 **Gemini 協作紀錄：** [[Gemini](https://gemini.google.com/share/9d1a44a1e2d6)]
 
 ### Chapter 9: High-Level Language (Jack 語言)
 **核心任務：** 開發互動式應用程式，驗證軟硬體整合的完整性。

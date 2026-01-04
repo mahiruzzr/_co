@@ -1,19 +1,3 @@
-# Nand2tetris Implementation (Part I: Hardware) 🖥️
-
-這是我完成 **Nand2tetris (The Elements of Computing Systems)** 前半部分（硬體實作）的專案紀錄。從最基礎的 Nand 邏輯閘開始，一路向上構建，最終完成了一台能運作的 Hack 電腦硬體架構。
-
-在這個過程中，我採用了 **自主學習、外部資源檢索與 AI 協作** 的混合模式，利用 Google Gemini 作為學習導師，並參考技術社群的實作經驗，以克服開發過程中的瓶頸。
-
-## 🛠️ 技術與工具 (Tools)
-
-* **Language:** HDL (Hardware Description Language)
-* **Environment:** Nand2tetris Hardware Simulator
-* **AI Assistant:** Google Gemini (用於邏輯諮詢、組合語言生成與複雜布林運算輔助)
-
----
-
-## 📚 學習歷程與實作細節 (Learning Journey)
-
 ### Chapter 1: Boolean Logic (布林邏輯)
 **目標：** 建立基礎邏輯閘 (Not, And, Or, Xor, Mux, DMux 等)。
 
@@ -58,6 +42,3 @@
 2.  **Memory.hdl & Computer.hdl：**
     * 在整合 RAM16K、Screen、Keyboard 到記憶體位址空間 (Memory Mapping)，以及最後將 CPU、Memory、ROM32K 連接成完整的電腦時，我諮詢了 AI 關於這兩個晶片的 HDL 撰寫結構與元件連接方式，確保訊號傳遞的正確性。
     * 🔗 **參考對話紀錄：** [Gemini Chat - Computer & Memory Implementation Guide](https://gemini.google.com/share/d35398fbe668)
-
-
-目前進度：**Hardware Layer Completed (100%)** ✅

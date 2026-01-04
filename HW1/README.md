@@ -24,7 +24,7 @@
     * 本專案選擇開發貪食蛇遊戲作為驗證案例（不同於課程範例 Pong），以測試自定義邏輯的穩定性。
     * 使用 Jack 高階語言開發，包含 `Snake` (移動邏輯)、`Food` (隨機生成) 與 `SnakeGame` (主迴圈)。
     * 透過此專案驗證了 OS 標準函式庫 (Screen, Keyboard, Math) 的 API 可用性。
-* 🔗 **Gemini 協作紀錄：** [待補：Snake Game 遊戲架構]
+* 🔗 **Gemini 協作紀錄：** [[Gemini](https://gemini.google.com/share/47abf48a6b8d)]
 
 ### Chapter 10 & 11: The Compiler (編譯器)
 **核心任務：** 將高階 Jack 語言翻譯為 VM 代碼。

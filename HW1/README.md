@@ -34,7 +34,6 @@
 * **Code Generation (代碼生成)：**
     * 管理類別級 (Class-Level) 與函式級 (Subroutine-Level) 的符號表。
     * 將高階邏輯 (如 `while`, `Array[i]`) 轉換為線性的 VM 指令序列。
-* 🔗 **Gemini 協作紀錄：** [待補：編譯器架構與陣列處理]
 
 ### Chapter 12: The Operating System (作業系統)
 **核心任務：** 提供高效率的系統級服務與標準函式庫。
@@ -44,10 +43,3 @@
 * **Memory.jack：** 管理 Heap (堆積) 記憶體，透過 **Free List (空閒列表)** 演算法實作 `alloc` 與 `deAlloc`，有效管理記憶體碎片。
 * [cite_start]**Sys.jack：** 負責系統初始化 (`init`)，並利用巢狀迴圈實作 `wait` 的 Busy-Wait 延遲機制 [cite: 8-12]。
 * **Screen.jack：** 提供圖形驅動，實作採用了 **Bresenham's Algorithm** (或類似的高效整數運算)，避免浮點運算以加速直線繪製。
-* 🔗 **Gemini 協作紀錄：** [待補：OS 演算法效率分析]
-
----
-
-## 📝 總結 (Summary)
-
-Part II 的軟體建構將一台僅能執行二進位指令的硬體，轉變為能夠執行高階物件導向程式的現代電腦。透過組譯器、虛擬機與編譯器的層層抽象，以及作業系統的高效演算法支援，我們成功驗證了 Hack 電腦架構的完整性與強大擴充性。

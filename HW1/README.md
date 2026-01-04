@@ -1,4 +1,4 @@
-*[[參考教授的答案全部沒修改](https://github.com/ccc114a/cpu2os/tree/6f843d8c708290b2c48257b8801ae11b8a72)]
+[[參考教授的答案全部沒修改](https://github.com/ccc114a/cpu2os/tree/6f843d8c708290b2c48257b8801ae11b8a72)]
 ### Chapter 6: The Assembler (組譯器)
 **核心任務：** 填補人類可讀符號與硬體可執行代碼之間的鴻溝。
 * **運作原理：** 採用 **兩次掃描 (Two-Pass)** 策略將 `.asm` 翻譯為 `.hack` 二進位碼 。

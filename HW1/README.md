@@ -34,7 +34,8 @@
 * **Code Generation (代碼生成)：**
     * 管理類別級 (Class-Level) 與函式級 (Subroutine-Level) 的符號表。
     * 將高階邏輯 (如 `while`, `Array[i]`) 轉換為線性的 VM 指令序列。
-* 🔗 **參考資料：** [[Github](https://github.com/Dong-HuiYun/_co/blob/64be87fb0831ef6cac6137d0d9992970da21ad3b/homework/%E6%9C%9F%E6%9C%AB%E4%BD%9C%E6%A5%AD/README.md)][[Github](https://github.com/Luo051227/_co/blob/15aef4d9492b008504dfd4d05190813577911a02/%E6%9C%9F%E6%9C%AB/README.md)]
+* 🔗 **參考資料：** [[Github](https://github.com/Dong-HuiYun/_co/blob/64be87fb0831ef6cac6137d0d9992970da21ad3b/homework/%E6%9C%9F%E6%9C%AB%E4%BD%9C%E6%A5%AD/README.md)][[Github](https://github.com/Luo051227/_co/blob/15aef4d9492b008504dfd4d05190813577911a02/%E6%9C%9F%E6%9C%AB/README.md)][[Github](https://github.com/Luo051227/_co/blob/15aef4d9492b008504dfd4d05190813577911a02/%E6%9C%9F%E6%9C%AB/README.md)]
+
 
 ### Chapter 12: The Operating System (作業系統)
 **核心任務：** 提供高效率的系統級服務與標準函式庫。

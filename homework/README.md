@@ -56,11 +56,11 @@
     * **指令解碼 (Instruction Decoding) - 依靠官方圖表：**
         關於如何區分 A-instruction 與 C-instruction，以及 C-instruction 中各個 bit (dest, comp, jump) 對應的控制訊號，我主要參考 **Nand2tetris 官方網站的簡報與圖表**。透過閱讀電路圖與真值表，我自行理解了控制單元 (Control Unit) 的邏輯流向。
     * **程式計數器邏輯 (PC Jump Logic) - AI 輔助實作：**
-        在實作 CPU 內部的 PC 跳躍邏輯時，需要同時考慮跳躍位元 ($j_1, j_2, j_3$) 與 ALU 的輸出狀態 ($zr, ng$)。這部分的組合邏輯相當繁瑣。我將這些條件描述給 **Gemini**，請 AI 協助生成並優化這部分的跳躍判斷邏輯，我再將其整合進 CPU 的設計中。
-        * 🔗 **參考對話紀錄：** [Gemini Chat - PC Jump Logic Optimization](https://gemini.google.com/share/d35398fbe668)
+        在實作 CPU 內部的 PC 跳躍邏輯時，需要同時考慮跳躍位元 ($j_1, j_2, j_3$) 與 ALU 的輸出狀態 ($zr, ng$)。這部分的組合邏輯相當繁瑣。我將這些條件描述給 **Gemini**，請 AI 協助生成並優化這部分的跳躍判斷邏輯，我再將其整合進 CPU 的設計中。**(相關對話紀錄已遺失)**
 
 3.  **Computer.hdl：**
-    * 將 CPU、Memory 與 ROM32K 連接起來，完成 Hack 電腦的最終組裝。
+    * 在整合 RAM16K、Screen、Keyboard 到記憶體位址空間 (Memory Mapping)，以及最後將 CPU、Memory、ROM32K 連接成完整的電腦時，我諮詢了 AI 關於這兩個晶片的 HDL 撰寫結構與元件連接方式，確保訊號傳遞的正確性。
+    * 🔗 **參考對話紀錄：** [Gemini Chat - Computer & Memory Implementation Guide](https://gemini.google.com/share/d35398fbe668)
 
 
 目前進度：**Hardware Layer Completed (100%)** ✅
